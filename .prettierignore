@@ -1,0 +1,11 @@
+# Ignore all PHP files:
+**/*.php
+
+# Ignore all SCSS files:
+**/*.scss
+
+# Ignore all JS files:
+**/*.js
+
+# Ignore all MD files:
+**/*.md
