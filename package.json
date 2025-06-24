@@ -1,0 +1,33 @@
+{
+  "name": "symfony-hexagonal-architecture",
+  "description": "This project is a basic example of how to organize a Symfony app using Hexagonal Architecture (also called Ports and Adapters).",
+  "keywords": [
+    "php",
+    "symfony"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjpeleato/symfony-hexagonal-architecture.git"
+  },
+  "author": "jjpeleato",
+  "license": "GPL-3.0-only",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "commit": "cz",
+    "prepare": "husky install"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^9.1.7"
+  }
+}
