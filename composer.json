@@ -1,6 +1,23 @@
 {
+    "name": "jjpeleato/symfony-hexagonal-architecture",
+    "description": "This project is a basic example of how to organize a Symfony app using Hexagonal Architecture (also called Ports and Adapters).",
+	"keywords": [
+		"php",
+		"symfony",
+		"psr1",
+		"psr2",
+        "psr4",
+		"psr12"
+	],
     "type": "project",
-    "license": "proprietary",
+    "homepage": "https://github.com/jjpeleato/symfony-hexagonal-architecture.git",
+    "license": "GPL-3.0-only",
+	"authors": [
+		{
+			"name": "@jjpeleato",
+			"homepage": "https://jjpeleato.com/"
+		}
+	],
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
@@ -15,6 +32,8 @@
         "symfony/yaml": "7.3.*"
     },
     "require-dev": {
+        "php-cs-fixer/shim": "^3.75",
+        "roave/security-advisories": "dev-latest"
     },
     "config": {
         "allow-plugins": {
@@ -55,7 +74,9 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
+        ],
+        "cs": "php-cs-fixer fix --dry-run --diff",
+		"cs:fix": "php-cs-fixer fix"
     },
     "conflict": {
         "symfony/symfony": "*"
@@ -64,6 +85,10 @@
         "symfony": {
             "allow-contrib": false,
             "require": "7.3.*"
-        }
+        },
+        "scripts-description": {
+			"cs": "Run php-cs-fixer",
+			"cs:fix": "Run php-cs-fixer beautifier"
+		}
     }
 }
