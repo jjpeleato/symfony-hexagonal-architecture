@@ -1,0 +1,53 @@
+# See: https://lando.dev/
+name: symfony-hexagonal-architecture
+
+# See: https://docs.lando.dev/plugins/symfony/
+recipe: symfony
+config:
+  php: "8.2"
+  via: apache:2.4
+  webroot: public
+  database: mariadb
+  xdebug: true
+  config:
+    php: private/config/php.ini
+
+# See: https://docs.lando.dev/landofile/proxy.html
+proxy:
+  appserver:
+    - web.symfonyhexagonalarchitecture.lndo.site
+  pma:
+    - pma.symfonyhexagonalarchitecture.lndo.site
+
+# See: https://docs.lando.dev/landofile/services.html
+services:
+  appserver:
+    run_as_root:
+      - "chown www-data: -R /app"
+  database:
+    portforward: 3308
+    creds:
+      user: symfony
+      password: symfony
+      database: symfony
+  pma:
+    type: phpmyadmin
+    hosts: database
+
+# See: https://docs.lando.dev/landofile/tooling.html
+tooling:
+  phpcs:
+    service: appserver
+    description: "Analyze code against the Symfony coding standards"
+    cmd:
+      - "vendor/bin/php-cs-fixer fix --dry-run --diff"
+  phpcsbf:
+    service: appserver
+    description: "Fix coding standards warnings/errors automatically"
+    cmd:
+      - "vendor/bin/php-cs-fixer fix"
+  dep:
+    service: appserver
+    desription: run deployer commands
+    cmd:
+      - "vendor/bin/dep"
